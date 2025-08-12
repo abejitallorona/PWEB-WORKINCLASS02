@@ -3,12 +3,12 @@ import './App.css';
 import Card from './components/Card/card.jsx';
 
 function App() {
-  const [saved, setSaved] = useState([]);
+  const [favoriteArtists, setFavoriteArtists] = useState([]);
 
-  const handleSaveProduct = (product) => {
-    setSaved((prev) => {
-      const exists = prev.some((p) => p.title === product.title);
-      return exists ? prev : [...prev, product];
+  const addArtistToFavorites = (artist) => {
+    setFavoriteArtists((previousFavorites) => {
+      const artistAlreadyExists = previousFavorites.some((a) => a.title === artist.title);
+      return artistAlreadyExists ? previousFavorites : [...previousFavorites, artist];
     });
   };
 
@@ -17,27 +17,36 @@ function App() {
       <section>
         <h1>Artistas</h1>
         <div className="grid">
-          <Card title="Bad Bunny" description="This is a great product!"
-                onSave={handleSaveProduct} />
-          <Card title="J Balvin" description="This is a great product!"
-                onSave={handleSaveProduct} />
-          <Card title="Feid" description="This is a great product!"
-                onSave={handleSaveProduct} />
+          <Card 
+            title="Bad Bunny" 
+            description="Reggaeton y trap latino!" 
+            onAddToFavorites={addArtistToFavorites} 
+          />
+          <Card 
+            title="J Balvin" 
+            description="El príncipe del reggaeton!" 
+            onAddToFavorites={addArtistToFavorites} 
+          />
+          <Card 
+            title="Feid" 
+            description="Urban y reggaeton colombiano!" 
+            onAddToFavorites={addArtistToFavorites} 
+          />
         </div>
       </section>
 
       <section style={{ marginTop: 32 }}>
-        <h2>Guardados</h2>
-        {saved.length === 0 ? (
-          <p>Aún no has guardado nada.</p>
+        <h2>Artistas Favoritos</h2>
+        {favoriteArtists.length === 0 ? (
+          <p>Aún no tienes artistas favoritos.</p>
         ) : (
           <div className="grid">
-            {saved.map((item) => (
+            {favoriteArtists.map((favoriteArtist) => (
               <Card
-                key={item.title}                     
-                title={item.title}
-                description={item.description}
-                onSave={() => {}}
+                key={favoriteArtist.title}                     
+                title={favoriteArtist.title}
+                description={favoriteArtist.description}
+                onAddToFavorites={() => {}}
               />
             ))}
           </div>
