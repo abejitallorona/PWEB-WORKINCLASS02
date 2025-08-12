@@ -18,18 +18,18 @@ function App() {
         <h1>Artistas</h1>
         <div className="grid">
           <Card 
-            title="Bad Bunny" 
-            description="Reggaeton y trap latino!" 
+            title="the neighbourhood" 
+            description="la vieja escuela B)" 
             onAddToFavorites={addArtistToFavorites} 
           />
           <Card 
-            title="J Balvin" 
-            description="El príncipe del reggaeton!" 
+            title="radiohead" 
+            description="solo soy una crepa" 
             onAddToFavorites={addArtistToFavorites} 
           />
           <Card 
-            title="Feid" 
-            description="Urban y reggaeton colombiano!" 
+            title="poppy" 
+            description="popipopipopipo" 
             onAddToFavorites={addArtistToFavorites} 
           />
         </div>
